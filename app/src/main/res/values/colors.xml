@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
+    <color name="purple_200">#FFBB86FC</color>
+
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="neutral">#000000</color>
+    <color name="mycustom">#97700C05</color>
+
+
+    <color name="colorPrimary">#024265</color>
+    <color name="colorPrimaryDark">#024265</color>
+    <color name="colorAccent">#B2F44336</color>
+
+    <color name="color_one">#fb7268</color>
+    <color name="color_white">#ededf2</color>
+    <color name="color_two">#E3E0E0</color>
+
+    <color name="shopping">#FFA726</color>
+    <color name="Python">#66BB6A</color>
+    <color name="grn">#6F083504</color>
+    <color name="CPP">#EF5350</color>
+    <color name="Loan">#29B6F6</color>
+    <color name="Fees">#009688</color>
+    <color name="homeRent">#673AB7</color>
+
+    <color name="salary">#66BB6A</color>
+    <color name="Interest">#8BC34A</color>
+    <color name="profit">#CDDC39</color>
+    <color name="pension">#FFC107</color>
+
+</resources>

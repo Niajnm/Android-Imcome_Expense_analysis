@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menuScale_id"
+        android:title="Home"
+        app:showAsAction="always"
+
+        android:icon="@drawable/ic_baseline_home_24" />
+
+    <item android:id="@+id/menuBloodHistory_id"
+        android:title="Calender"
+        app:showAsAction="always"
+
+        android:icon="@drawable/ic_baseline_calendar_month_24" />
+
+    <item android:id="@+id/menuAnalysis_id"
+        android:title="Analysis"
+        app:showAsAction="always"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_analytics_24" />
+
+    <item android:id="@+id/menu_id"
+        android:title="Analysis"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_all_inclusive_24" />
+</menu>

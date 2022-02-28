@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Income Expense Manager</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cancel">cancel</string>
+    <string name="fire">Yes</string>
+    <string name="dialog_fire_missiles">test</string>
+    <string name="ok">ok</string>
+
+    <string-array name="income_category">
+        <item>Salary</item>
+        <item>House Rent</item>
+        <item>Interest</item>
+        <item>Profit</item>
+
+    </string-array>
+
+    <string-array name="expense_category">
+        <item>Shopping</item>
+        <item>House Rent</item>
+        <item>Loan</item>
+        <item>Fees</item>
+
+    </string-array>
+
+    <string-array name="income_payment">
+        <item>Cash</item>
+        <item>Credit Card</item>
+        <item>Bank</item>
+        <item>Bkash</item>
+
+    </string-array>
+</resources>
