@@ -26,7 +26,6 @@ class AnalyzerFragment : Fragment() {
     var dataList = mutableListOf<User>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -35,9 +34,6 @@ class AnalyzerFragment : Fragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_analyzer, container, false)
         mPieChart = v.findViewById<View>(R.id.month_piechart) as PieChart
-
-        // chart(2,4,5,6,7,8)
-
         (activity as MainActivity).listener(object : MonthSearch {
             override fun monthYearpass(items: List<DisplayItem>) {
                 //yui
@@ -59,7 +55,6 @@ class AnalyzerFragment : Fragment() {
             fragmentTransaction?.addToBackStack(null);
             fragmentTransaction?.commit()
         }
-
         Log.d("tag", "::item.......${dataList.size}")
         return v
     }
@@ -85,19 +80,14 @@ class AnalyzerFragment : Fragment() {
         for (i in items.indices) {
             if (items[i].category == "Shopping" && items[i].tag == "expense") {
                 Shopping += items[i].money!!
-
             } else if (items[i].category == "House Rent" && items[i].tag == "expense") {
                 hRent += items[i].money!!
-
             } else if (items[i].category == "Loan" && items[i].tag == "expense") {
                 Loan += items[i].money!!
-
             } else if (items[i].category == "Fees" && items[i].tag == "expense") {
                 Fees += items[i].money!!
-
             }
             Log.d(ContentValues.TAG, "cursorAnalysis: ${items[i].money}")
-
         }
 
         chart(Shopping, hRent, Loan, Fees)
@@ -109,7 +99,6 @@ class AnalyzerFragment : Fragment() {
         tv_homeRent.setText(Integer.toString(hRent))
         tv_Loan.setText(Integer.toString(Loan))
         tv_Fees.setText(Integer.toString(Fees))
-
         // Set the data and color to the pie chart
         mPieChart.clearChart()
         mPieChart.addPieSlice(
@@ -129,6 +118,5 @@ class AnalyzerFragment : Fragment() {
         mPieChart.addPieSlice(PieModel("Loan", Loan.toFloat(), resources.getColor(R.color.Loan)))
         mPieChart.addPieSlice(PieModel("Fees", Fees.toFloat(), resources.getColor(R.color.Fees)))
         mPieChart.startAnimation()
-
     }
 }

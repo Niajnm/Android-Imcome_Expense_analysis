@@ -9,11 +9,17 @@
 
         android:icon="@drawable/ic_baseline_home_24" />
 
-    <item android:id="@+id/menuBloodHistory_id"
-        android:title="Calender"
+    <item android:id="@+id/menuRecent_id"
+        android:title="Recent"
         app:showAsAction="always"
 
         android:icon="@drawable/ic_baseline_calendar_month_24" />
+
+    <item android:id="@+id/menuR_id"
+        android:title=""
+        android:enabled="false"
+        app:showAsAction="always"
+        />
 
     <item android:id="@+id/menuAnalysis_id"
         android:title="Analysis"

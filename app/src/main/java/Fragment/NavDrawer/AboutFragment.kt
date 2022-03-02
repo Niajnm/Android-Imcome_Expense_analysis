@@ -16,8 +16,6 @@ class AboutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_about, container, false)
-
-
         return v
     }
 }

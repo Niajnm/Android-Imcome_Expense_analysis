@@ -28,6 +28,7 @@ import java.util.*
 class ExpenseFragment : Fragment() {
     var payType = ""
     var cattype = ""
+    val currentTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date())
 
 
     var currentDate = SimpleDateFormat("dd MMM yyyy").format(Date())
@@ -87,27 +88,16 @@ class ExpenseFragment : Fragment() {
         }
 
         val expnCategory = resources.getStringArray(R.array.expense_category)
-        var expnAdapter = ArrayAdapter<String>(
-            requireContext(), R.layout.support_simple_spinner_dropdown_item, expnCategory!!
+        var expnAdapter = ArrayAdapter<String>(requireContext(), R.layout.support_simple_spinner_dropdown_item, expnCategory!!
         )
         v.expn_category_spinner.adapter = expnAdapter
         v.expn_category_spinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View,
-                    position: Int,
-                    id: Long
+                override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long
                 ) {
-
                     cattype = expnCategory!![position].toString()
-                    Toast.makeText(
-                        context,
-                        expnCategory!![position].toString() + " selected",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(context, expnCategory!![position].toString()+" selected",Toast.LENGTH_SHORT).show()
                 }
-
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
@@ -131,43 +121,48 @@ class ExpenseFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
         v.floating_button_expense.setOnClickListener {
-            var edit1 = textExpense_money.text.toString()
-            var payNcat = "$cattype ($payType)"
-            if (edit1.isEmpty()) {
-                textExpense_money!!.error = "Money!"
-                textExpense_money!!.requestFocus()
-            } else {
-
-                val money = textExpense_money.text.toString().toInt()
-                lifecycleScope.launch {
-                    val db = AppDatabase.getDatabase(requireContext()).userDao()
-                    val user = User(0, currentDate, money, cattype, payType, "expense")
-                    db.insertAll(user)
-
-                    try {
-                        val datekeyList = db.getUniqueDate(currentDate)
-                        if (datekeyList.size == 0) {
-                            val dis = DisplayItem(0, currentDate, 0, money, payNcat)
-                            db.insertAllDisplay(dis)
-
-                        } else {
-                            db.updateDisplayExpense(money, currentDate)
-                        }
-                    } catch (e: Exception) {
-                    }
-                }
-            }
-
-            activity?.finish()
-            startActivity(Intent(requireContext(), MainActivity::class.java))
+         setData()
         }
 
+        v.income_add_btn.setOnClickListener {
+            val fragment = IncomeFragment()
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.insert_fragment_container, fragment)
+                ?.commit()
+        }
         return v
     }
 
+    private fun setData() {
+        var edit1 = textExpense_money.text.toString()
+        var payNcat = "$cattype ($payType)"
+
+        if (edit1.isEmpty()) {
+            textExpense_money!!.error = "Money!"
+            textExpense_money!!.requestFocus()
+        } else {
+            val money = textExpense_money.text.toString().toInt()
+            lifecycleScope.launch {
+                val db = AppDatabase.getDatabase(requireContext()).userDao()
+                val user = User(0, currentDate, money, cattype, payType, "expense",currentTime)
+                db.insertAll(user)
+
+                try {
+                    val datekeyList = db.getUniqueDate(currentDate)
+
+                    if (datekeyList.isEmpty()) {
+                        val dis = DisplayItem(0, currentDate, 0, money, payNcat)
+                        db.insertAllDisplay(dis)
+                    } else {
+                        db.updateDisplayExpense(money, currentDate)
+                    }
+                   } catch (e: Exception) { }
+            }
+            activity?.finish()
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+        }
+    }
 }

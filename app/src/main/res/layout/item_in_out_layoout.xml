@@ -13,6 +13,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            >
+
+            <TextView
+                android:id="@+id/recent_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="2dp"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recent_time"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:padding="2dp"
+                android:textSize="12sp"
+                android:text="12:30 AM" />
+
+
+        </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
         android:weightSum="3">
@@ -61,6 +99,7 @@
             android:text="bdt 987435897" />
 
 
+    </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

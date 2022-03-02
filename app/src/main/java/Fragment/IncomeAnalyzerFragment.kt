@@ -26,7 +26,6 @@ class IncomeAnalyzerFragment : Fragment() {
     var dataList = mutableListOf<User>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -36,15 +35,12 @@ class IncomeAnalyzerFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_analyzer_income, container, false)
         mPieChart = v.findViewById<View>(R.id.month_income_piechart) as PieChart
 
-        // chart(2,4,5,6,7,8)
-
         (activity as MainActivity).listener(object : MonthSearch {
             override fun monthYearpass(items: List<DisplayItem>) {
                 //yui
             }
 
             override fun monthYearpassUser(items: List<User>) {
-
                 dataList.addAll(items)
                 Log.d("tag", "::item${dataList.size}")
                 requireActivity().runOnUiThread {
@@ -55,9 +51,8 @@ class IncomeAnalyzerFragment : Fragment() {
 
         Log.d("tag", "::item.......${dataList.size}")
         v.frag_btn_to_ex.setOnClickListener {
-
-            val bpfragment = AnalyzerFragment()
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, bpfragment)
+            val fragment = AnalyzerFragment()
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,fragment)
                 ?.commit()
         }
 
@@ -73,7 +68,6 @@ class IncomeAnalyzerFragment : Fragment() {
 //    }
 
     private fun showData(items: List<User>) {
-
         var Salary = 0
         var Interest = 0
         var Profit = 0
@@ -85,21 +79,15 @@ class IncomeAnalyzerFragment : Fragment() {
         for (i in items.indices) {
             if (items[i].category == "Salary" && items[i].tag == "income") {
                 Salary += items[i].money!!
-
             } else if (items[i].category == "Interest" && items[i].tag == "income") {
                 Interest += items[i].money!!
-
             } else if (items[i].category == "Profit" && items[i].tag == "income") {
                 Profit += items[i].money!!
-
             } else if (items[i].category == "Pension" && items[i].tag == "income") {
                 Pension += items[i].money!!
-
             }
             Log.d(ContentValues.TAG, "IncomecursorAnalysis: ${items[i].money}")
-
         }
-
         chart(Salary, Interest, Profit, Pension)
     }
 
@@ -122,7 +110,6 @@ class IncomeAnalyzerFragment : Fragment() {
         mPieChart.addPieSlice(PieModel("Interest", Interest.toFloat(), resources.getColor(R.color.Interest)))
         mPieChart.addPieSlice(PieModel("Profit", Profit.toFloat(), resources.getColor(R.color.profit)))
         mPieChart.addPieSlice(PieModel("Pension", Pension.toFloat(), resources.getColor(R.color.pension)))
-
         mPieChart.startAnimation()
 
     }

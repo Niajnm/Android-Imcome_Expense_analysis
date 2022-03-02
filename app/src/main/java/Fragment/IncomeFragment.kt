@@ -25,19 +25,18 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class IncomeFragment : Fragment() {
-
     var payType = ""
     var cattype = ""
     var currentDate = SimpleDateFormat("dd MMM yyyy").format(Date())
     var date = currentDate
     var monthYr = ""
+    val currentTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         val v = inflater.inflate(R.layout.fragment_income, container, false)
@@ -47,7 +46,6 @@ class IncomeFragment : Fragment() {
             val y = cal.get(Calendar.YEAR)
             val m = cal.get(Calendar.MONTH)
             val d = cal.get(Calendar.DAY_OF_MONTH)
-
             //  bpResult_id.text= "$y-$m-$d"
             val datepickerdialog =
                 DatePickerDialog(requireContext(), { view, year, monthOfYear, dayOfMonth ->
@@ -65,7 +63,6 @@ class IncomeFragment : Fragment() {
                         "Nov",
                         "Dec"
                     )
-
                     //date="$dayOfMonth-$month-$year"
 
                     date = "$dayOfMonth ${listMonth[monthOfYear]} $year"
@@ -78,7 +75,6 @@ class IncomeFragment : Fragment() {
                     calender.set(Calendar.YEAR, year)
                     val dt1 = calender.timeInMillis
                     val cal_milisec = dt1
-
                 }, y, m, d)
 
             datepickerdialog.show()
@@ -104,6 +100,7 @@ class IncomeFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
@@ -127,38 +124,48 @@ class IncomeFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
+        v.frag_expns_btn.setOnClickListener {
+            val fragment = ExpenseFragment()
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.insert_fragment_container, fragment)
+                ?.commit()
+        }
 
         v.floating_button_Income.setOnClickListener {
-            var edit1 = textIncome_money.text.toString()
-
-            var payNcat = "$cattype ($payType)"
-            if (edit1.isEmpty()) {
-                textIncome_money!!.error = "Money!"
-                textIncome_money!!.requestFocus()
-            } else {
-                val money = textIncome_money.text.toString().toInt()
-                lifecycleScope.launch {
-                    val db = AppDatabase.getDatabase(requireContext()).userDao()
-                    val user = User(0, date, money, cattype, payType, "income")
-                    db.insertAll(user)
-                    try {
-                        val datekeyList = db.getUniqueDate(date)
-                        if (datekeyList.size == 0) {
-                            val dis = DisplayItem(0, date, money, 0, payNcat)
-                            db.insertAllDisplay(dis)
-                        } else {
-                            db.updateDisplayIn(money, date)
-                        }
-
-                    } catch (e: Exception) {
-                    }
-                }
-                activity?.finish()
-                startActivity(Intent(requireContext(), MainActivity::class.java))
-            }
+            dataSet()
         }
         return v
+    }
+
+    private fun dataSet() {
+        var edit1 = textIncome_money.text.toString()
+        var payNcat = "$cattype ($payType)"
+
+        if (edit1.isEmpty()) {
+            textIncome_money!!.error = "Money!"
+            textIncome_money!!.requestFocus()
+        } else {
+            val money = textIncome_money.text.toString().toInt()
+
+            lifecycleScope.launch {
+                val db = AppDatabase.getDatabase(requireContext()).userDao()
+                val user = User(0, date, money, cattype, payType, "income", currentTime)
+                db.insertAll(user)
+                try {
+                    val datekeyList = db.getUniqueDate(date)
+                    if (datekeyList.size == 0) {
+                        val dis = DisplayItem(0, date, money, 0, payNcat)
+                        db.insertAllDisplay(dis)
+                    } else {
+                        db.updateDisplayIn(money, date)
+                    }
+                } catch (e: Exception) {
+                }
+            }
+            activity?.finish()
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+        }
     }
 }

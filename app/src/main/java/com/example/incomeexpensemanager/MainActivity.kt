@@ -13,10 +13,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
-import android.widget.DatePicker
-
-import android.app.DatePickerDialog
-import com.example.e_itmedi.Database.DatabaseHelper
 
 import RoomDatabase.AppDatabase
 import RoomDatabase.DisplayItem
@@ -34,7 +30,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(){
     var yeatMonth = ""
-    var flag = 0
+
     var currentDate = SimpleDateFormat("MMM yyyy").format(Date())
 
     var sharedpreferences: SharedPreferences? = null
@@ -44,22 +40,25 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
-        val databaseHelper = DatabaseHelper(this)
-        val sqLiteDatabase = databaseHelper!!.writableDatabase
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_id)
         title = ""
         val toggle = ActionBarDrawerToggle(this, drawer_id, toolbar_id, R.string.open, R.string.close)
         toggle.drawerArrowDrawable.color = resources.getColor(R.color.neutral)
         drawerLayout!!.addDrawerListener(toggle)
         toggle.syncState()
+        monthPick_id.text=currentDate
         monthPick_id.setOnClickListener {
             monthpick()
+        }
+        open_add_btn.setOnClickListener {
+            startActivity(Intent(this, InsertDataActivity::class.java))
+            finish()
         }
 
         nav_id.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.Profile_ID -> {
-                    var intent = Intent(this,NavMenuActivity::class.java)
+                    val intent = Intent(this,NavMenuActivity::class.java)
                     intent.putExtra("fragKey","profile")
                     startActivity(intent)
                     Toast.makeText(
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity(){
                 }
                 R.id.menuSetting_id -> {
 
-                    var intent = Intent(this,NavMenuActivity::class.java)
+                    val intent = Intent(this,NavMenuActivity::class.java)
                     intent.putExtra("fragKey","settings")
                     startActivity(intent)
                     Toast.makeText(
@@ -104,6 +103,17 @@ class MainActivity : AppCompatActivity(){
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                R.id.menuAbout_id -> {
+
+                    val intent = Intent(this,NavMenuActivity::class.java)
+                    intent.putExtra("fragKey","about")
+                    startActivity(intent)
+                    Toast.makeText(
+                        this,
+                        "About",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
                 R.id.menuLogout_id -> {
                     LogOut(this)
                     nav_id.menu.findItem(R.id.menuLogIn_id).isVisible = true
@@ -121,14 +131,13 @@ class MainActivity : AppCompatActivity(){
 
             when (it.itemId) {
                 R.id.menuScale_id -> {
-
                     val bpfragment = HomeFragment()
                     val fragmentManager = supportFragmentManager
                     val fragmentTransaction = fragmentManager.beginTransaction()
                     fragmentTransaction.replace(R.id.fragment_container, bpfragment)
                     fragmentTransaction.commit()
                 }
-                R.id.menuBloodHistory_id -> {
+                R.id.menuRecent_id -> {
                     val bpfragment = CalenderFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_container, bpfragment).commit()
                 }
@@ -175,33 +184,30 @@ class MainActivity : AppCompatActivity(){
                 fun onCancel(dialog: AlertDialog?) {}
                 override fun onCancel(p0: androidx.appcompat.app.AlertDialog?) {
                     p0?.dismiss()
-
                 }
             }).show()
     }
 
     fun LogOut(context :Context) {
-
         val builder1 = AlertDialog.Builder(context)
         builder1.setMessage("Do you want to Logout ?")
         builder1.setCancelable(true)
 
         builder1.setPositiveButton(
-            "Yes",
-            DialogInterface.OnClickListener { dialog, id ->
-                dialog.cancel()
-                Firebase.auth.signOut()
-                nav_id!!.menu.findItem(R.id.menuLogout_id).setVisible(false)
-                nav_id!!.menu.findItem(R.id.Profile_ID).setVisible(false)
+            "Yes"
+        ) { dialog, id ->
+            dialog.cancel()
+            Firebase.auth.signOut()
+            nav_id!!.menu.findItem(R.id.menuLogout_id).isVisible = false
+            nav_id!!.menu.findItem(R.id.Profile_ID).setVisible(false)
 
-                val sharedpreferences: SharedPreferences = getSharedPreferences("MyPREFERENCES", 0)
-                val editor = sharedpreferences!!.edit()
-                editor.clear().commit()
-            })
+            val sharedpreferences: SharedPreferences = getSharedPreferences("MyPREFERENCES", 0)
+            val editor = sharedpreferences.edit()
+            editor.clear().apply()
+        }
 
         builder1.setNegativeButton(
-            "No",
-            DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+            "No") { dialog, id -> dialog.cancel() }
 
         val alert11: AlertDialog = builder1.create()
         alert11.show()
@@ -230,8 +236,8 @@ class MainActivity : AppCompatActivity(){
             Log.d("this", "flag: $tk")
             monthSearch.monthYearpass(dataList)
             for (i in dataList.indices) {
-                incomeMonthly = incomeMonthly!! + dataList[i].income!!
-                expenseMonthly = expenseMonthly!! + dataList[i].expense!!
+                incomeMonthly += dataList[i].income!!
+                expenseMonthly = expenseMonthly + dataList[i].expense!!
             }
             TextView_IncmMonth_id.text = incomeMonthly.toString()
             TextView_expnsMonth_id.text = expenseMonthly.toString()
@@ -241,10 +247,7 @@ class MainActivity : AppCompatActivity(){
 
     fun userlistSearch() {
         val dataList = mutableListOf<User>()
-
         var tk = currentDate
-        var incomeMonthly = 0
-        var expenseMonthly = 0
 
         lifecycleScope.launch(Dispatchers.IO) {
             val db = AppDatabase.getDatabase(this@MainActivity).userDao()

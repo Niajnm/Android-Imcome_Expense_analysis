@@ -37,10 +37,7 @@ var recycler : RecyclerView? = null
         val v = inflater.inflate(R.layout.fragment_home, container, false)
         recycler = v.findViewById(R.id.Recycler_id)
 
-     v.floating_button_Id.setOnClickListener {
-            startActivity(Intent(requireContext(), InsertDataActivity::class.java))
-            activity?.finish()
-        }
+
 //          val act = MainActivity()
 //        val lst =act.listSearch()
 //        showlist(lst)

@@ -1,6 +1,6 @@
 package com.example.incomeexpensemanager
 
-import Fragment.AnalyzerFragment
+import Fragment.NavDrawer.AboutFragment
 import Fragment.NavDrawer.ProfileFragment
 import Fragment.NavDrawer.SettingsFragment
 import android.graphics.Color
@@ -23,14 +23,17 @@ class NavMenuActivity : AppCompatActivity() {
 //        window.statusBarColor = Color.TRANSPARENT
         val intent = intent
         val frag = intent.getStringExtra("fragKey")
-
         if (frag == "profile") {
-            val bpfragment = ProfileFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.frag_container, bpfragment)
+            val fragment = ProfileFragment()
+            supportFragmentManager.beginTransaction().replace(R.id.frag_container, fragment)
                 .commit()
         }else if(frag=="settings"){
-            val bpfragment = SettingsFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.frag_container, bpfragment)
+            val fragment = SettingsFragment()
+            supportFragmentManager.beginTransaction().replace(R.id.frag_container, fragment)
+                .commit()
+        }else if(frag=="about"){
+            val fragment = AboutFragment()
+            supportFragmentManager.beginTransaction().replace(R.id.frag_container, fragment)
                 .commit()
         }
     }

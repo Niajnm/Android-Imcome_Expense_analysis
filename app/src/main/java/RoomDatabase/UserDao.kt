@@ -9,10 +9,13 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun getAll(): List<User>
 
-    @Query("SELECT * FROM display")
+    @Query("SELECT * FROM display ORDER BY uid DESC")
     fun getAllDisplay(): List<DisplayItem>
 
-    @Query("SELECT * FROM display WHERE day LIKE '%' || :monthYr || '%'")
+    @Query("SELECT * FROM user ORDER BY uid DESC")
+    fun getAllRecent(): List<User>
+
+    @Query("SELECT * FROM display WHERE day LIKE '%' || :monthYr || '%' ORDER BY uid DESC")
     fun getAllbyMonth(monthYr: String?): MutableList<DisplayItem>
 
     @Query("SELECT * FROM user WHERE day LIKE '%' || :monthYr || '%'")

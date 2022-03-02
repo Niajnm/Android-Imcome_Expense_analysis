@@ -7,6 +7,20 @@
     android:orientation="vertical"
     tools:context=".DetailsActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_details"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        android:background="@color/mycustom">
+        <TextView
+            android:id="@+id/Tool_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textColor="@color/white"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"

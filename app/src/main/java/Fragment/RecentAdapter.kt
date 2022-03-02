@@ -1,4 +1,6 @@
-package com.example.incomeexpensemanager
+package Fragment
+
+import RoomDatabase.DisplayItem
 import RoomDatabase.User
 import android.app.AlertDialog
 import android.content.Context
@@ -7,21 +9,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.incomeexpensemanager.R
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.dialog_details_layout.view.*
 
-class AdapterDeatils(
+class RecentAdapter (
     var context: Context,
-    var rdata: List<User>
-):
-    RecyclerView.Adapter<AdapterDeatils.MyViewHolder>() {
-    private val ctx = context as DetailsActivity
+    var rdata: List<User>,
+    val fragment: CalenderFragment
+) :
+    RecyclerView.Adapter<RecentAdapter.MyViewHolder>() {
+
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //  var viewName: TextView = itemView.findViewById(R.id.textView_title)
         var viewName: TextView = itemView.findViewById(R.id.detailsTitle_id)
         var viewIncome: TextView = itemView.findViewById(R.id.detailsBdt_id)
+        var viewTime: TextView = itemView.findViewById(R.id.recent_time)
+        var viewDate: TextView = itemView.findViewById(R.id.recent_date)
         var viewTag: Chip = itemView.findViewById(R.id.chip_id)
-        //  var viewExpense: Chip = itemView.findViewById(R.id.totExpense_id)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -33,13 +38,18 @@ class AdapterDeatils(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val userPosition = rdata[position]
         // val getdate=userPosition.day.toString()
+
         val getMoney = userPosition.money.toString()
         val getFlag = userPosition.tag.toString()
         val getCategory = userPosition.category.toString()
         val getTitle = userPosition.bank.toString()
+        val getTitme = userPosition.time.toString()
+        val getDate = userPosition.day.toString()
         //  holder.viewName.text=getdate
         //   holder.viewIncome.text = "bdt $getMoney"
         holder.viewName.text="$getCategory ($getTitle)"
+        holder.viewTime.text= getTitme
+        holder.viewDate.text= getDate
 
         if (getFlag == "income") {
             holder.viewIncome.text = "bdt $getMoney"
@@ -54,9 +64,9 @@ class AdapterDeatils(
             val builder1 = AlertDialog.Builder(context)
             val layoutInflater = LayoutInflater.from(context)
             val dialogView = layoutInflater.inflate(R.layout.dialog_details_layout, null)
-           val date= ctx.rcvDate
+          //  val date= ctx.rcvDate
 
-            dialogView.dlg_date_id.text=date
+          //  dialogView.dlg_date_id.text=date
             dialogView.dlg_option.text=getTitle
             dialogView.dlg_money.text="BDT -$getMoney"
 
@@ -68,6 +78,9 @@ class AdapterDeatils(
                 alert11.dismiss()
             }
         }
+
+
+//        val id = userPosition.bpId!!
     }
 
     override fun getItemCount(): Int {

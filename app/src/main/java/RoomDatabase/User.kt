@@ -14,6 +14,7 @@ data class User(
     @ColumnInfo(name = "money") val money: Int?,
      @ColumnInfo(name = "category") val category: String?,
     @ColumnInfo(name = "cash_type") val bank: String?,
-    @ColumnInfo(name = "Tag") val tag: String?
+    @ColumnInfo(name = "Tag") val tag: String?,
+    @ColumnInfo(name = "time") val time: String?
 )
 
