@@ -3,10 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:padding="10dp"
     android:background="@color/mycustom"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:padding="10dp">
 
 
     <ImageView
@@ -14,24 +13,23 @@
         android:layout_height="120dp"
         android:layout_gravity="center_horizontal"
         android:padding="5dp"
-        android:src="@drawable/start_icon"
-        />
+        android:src="@drawable/start_icon" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:padding="5dp"
-        android:src="@drawable/ic_baseline_home_24"
-        />
+        android:src="@drawable/ic_baseline_home_24" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="elon@mail"
-        android:textSize="10dp"
         android:layout_gravity="center_horizontal"
-        android:padding="5dp"
         android:layout_marginTop="10dp"
-        />
+        android:padding="5dp"
+        android:text="elon@mail"
+        android:textSize="10dp" />
 
 </LinearLayout>

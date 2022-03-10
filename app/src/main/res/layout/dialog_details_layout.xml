@@ -1,51 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:gravity="center"
+    android:background="@color/mycustom"
+    android:gravity="top"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="5dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <TextView
-        android:id="@+id/dlg_date_id"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottomSheet_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:padding="5dp"
-        android:background="@color/mycustom"
-        android:text="Date" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/dlg_option"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_margin="5dp"
-        android:text="bank" />
+        <LinearLayout
 
-    <TextView
-        android:id="@+id/dlg_money"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textAlignment="viewEnd"
-        android:layout_margin="5dp"
-        android:text="BDT" />
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/dlg_describe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_margin="5dp"
-        android:text="Describe" />
+          <androidx.cardview.widget.CardView
+              android:layout_width="wrap_content"
+              android:layout_marginTop="10dp"
+              android:layout_height="wrap_content"
+              app:cardCornerRadius="5dp"
+              android:elevation="30dp">
+              <TextView
+                  android:id="@+id/dlg_date_id"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
 
-    <Button
-        android:id="@+id/dialouge_ok"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ok" />
+                  android:background="@color/mycustom"
+                  android:gravity="center"
+                  android:padding="5dp"
+                  android:text="Date"
+                  android:textColor="@color/white"
+                  android:textStyle="bold" />
+          </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/dlg_repository"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:text="repository" />
+
+            <TextView
+                android:id="@+id/dlg_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:text="bank" />
+
+            <TextView
+                android:id="@+id/dlg_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#32BF352B"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:text="BDT"
+                android:textAlignment="viewEnd" />
+
+            <TextView
+                android:id="@+id/dlg_describe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:fontFamily="serif"
+                android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mycustom"
+                android:layout_margin="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/img_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_edit_note_24" />
+
+                <ImageView
+                    android:id="@+id/img_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/img_edit"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_share_24" />
+
+                <ImageView
+                    android:id="@+id/img_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_delete_24" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dialouge_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="end"
+                android:text="ok" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

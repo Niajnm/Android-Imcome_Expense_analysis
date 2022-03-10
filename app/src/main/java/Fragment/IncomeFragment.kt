@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_expense.*
 import kotlinx.android.synthetic.main.fragment_expense.view.*
 import kotlinx.android.synthetic.main.fragment_income.*
 import kotlinx.android.synthetic.main.fragment_income.view.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,7 +28,7 @@ import java.util.*
 class IncomeFragment : Fragment() {
     var payType = ""
     var cattype = ""
-    var currentDate = SimpleDateFormat("dd MMM yyyy").format(Date())
+    var currentDate = SimpleDateFormat("d MMM yyyy").format(Date())
     var date = currentDate
     var monthYr = ""
     val currentTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date())
@@ -94,11 +95,6 @@ class IncomeFragment : Fragment() {
                     id: Long
                 ) {
                     cattype = incmCategory!![position].toString()
-                    Toast.makeText(
-                        context,
-                        incmCategory!![position].toString() + " selected",
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -111,35 +107,26 @@ class IncomeFragment : Fragment() {
         v.incm_payment_spinner.adapter = paymentAdapter
         v.incm_payment_spinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View,
-                    position: Int,
-                    id: Long
+                override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int,id:Long
                 ) {
                     payType = incmPayment!![position].toString()
-                    Toast.makeText(
-                        context,
-                        incmPayment!![position].toString() + " selected",
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
-
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         v.frag_expns_btn.setOnClickListener {
-            val fragment = ExpenseFragment()
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.insert_fragment_container, fragment)
-                ?.commit()
+//            val fragment = ExpenseFragment()
+//            activity?.supportFragmentManager?.beginTransaction()
+//                ?.replace(R.id.insert_fragment_container, fragment)
+//                ?.commit()
         }
 
         v.floating_button_Income.setOnClickListener {
-            dataSet()
+           // dataSet()
         }
         return v
     }
 
-    private fun dataSet() {
+    private fun dataSetincm() {
         var edit1 = textIncome_money.text.toString()
         var payNcat = "$cattype ($payType)"
 
@@ -149,9 +136,9 @@ class IncomeFragment : Fragment() {
         } else {
             val money = textIncome_money.text.toString().toInt()
 
-            lifecycleScope.launch {
+            lifecycleScope.launch(Dispatchers.IO) {
                 val db = AppDatabase.getDatabase(requireContext()).userDao()
-                val user = User(0, date, money, cattype, payType, "income", currentTime)
+                val user = User(0, date, money, cattype, payType, "1", currentTime)
                 db.insertAll(user)
                 try {
                     val datekeyList = db.getUniqueDate(date)
@@ -165,7 +152,7 @@ class IncomeFragment : Fragment() {
                 }
             }
             activity?.finish()
-            startActivity(Intent(requireContext(), MainActivity::class.java))
+          //  startActivity(Intent(requireContext(), MainActivity::class.java))
         }
     }
 }

@@ -22,6 +22,7 @@
     <color name="shopping">#FFA726</color>
     <color name="Python">#66BB6A</color>
     <color name="grn">#6F083504</color>
+    <color name="grnLow">#41083504</color>
     <color name="CPP">#EF5350</color>
     <color name="Loan">#29B6F6</color>
     <color name="Fees">#009688</color>
@@ -31,5 +32,6 @@
     <color name="Interest">#8BC34A</color>
     <color name="profit">#CDDC39</color>
     <color name="pension">#FFC107</color>
+    <color name="navColor">#ededef</color>
 
 </resources>

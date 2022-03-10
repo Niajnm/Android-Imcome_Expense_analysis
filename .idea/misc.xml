@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable-v24/border_strock.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/back_circle_nav.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/back_shape_down.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/circle_back.xml" value="1.25" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/gradient_back.xml" value="0.20833333333333334" />
@@ -11,7 +12,9 @@
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_all_inclusive_24.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_analytics_24.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_do_not_disturb_on_24.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_edit_note_24.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.20833333333333334" />
@@ -19,29 +22,32 @@
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/insert_back.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/drawable/profile_bg.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_2.xml" value="0.25" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_details.xml" value="0.22" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_insert_data.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_insert_data.xml" value="0.1" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_nav_menu.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_payment_details.xml" value="0.11151315789473684" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_start.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/activity_start.xml" value="0.22" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/date_item_layout.xml" value="0.25" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/dialog_details_layout.xml" value="0.22" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/dialog_details_layout.xml" value="0.16" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/dialog_month_year_picker.xml" value="0.1921875" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/dialogue_add_category.xml" value="0.128125" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_about.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_analyzer.xml" value="0.33" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_analyzer_income.xml" value="0.25" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_calender.xml" value="0.33" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_expense.xml" value="0.22" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_home.xml" value="0.1921875" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_income.xml" value="0.15625" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_income.xml" value="0.22" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/fragment_settings.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/full_details_layout.xml" value="0.18" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/item_in_out_layoout.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/item_in_out_layoout.xml" value="0.22" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/month_picker_layout.xml" value="0.1921875" />
-        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/navdrawer_layout.xml" value="0.33" />
+        <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/layout/navdrawer_layout.xml" value="0.22" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/menu/bottom_menu.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/menu/country_menu.xml" value="0.1921875" />
         <entry key="..\:/Users/njmah/AndroidStudioProjects/IncomeExpenseManager2/app/src/main/res/menu/menu_layout.xml" value="0.1921875" />

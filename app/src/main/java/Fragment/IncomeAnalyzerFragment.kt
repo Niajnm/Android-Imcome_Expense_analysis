@@ -77,13 +77,13 @@ class IncomeAnalyzerFragment : Fragment() {
         Log.d(ContentValues.TAG, "cursorAnalysis: ${items.size}")
 
         for (i in items.indices) {
-            if (items[i].category == "Salary" && items[i].tag == "income") {
+            if (items[i].category == "Salary" && items[i].tag == "1") {
                 Salary += items[i].money!!
-            } else if (items[i].category == "Interest" && items[i].tag == "income") {
+            } else if (items[i].category == "Interest" && items[i].tag == "1") {
                 Interest += items[i].money!!
-            } else if (items[i].category == "Profit" && items[i].tag == "income") {
+            } else if (items[i].category == "Profit" && items[i].tag == "1") {
                 Profit += items[i].money!!
-            } else if (items[i].category == "Pension" && items[i].tag == "income") {
+            } else if (items[i].category == "Pension" && items[i].tag == "1") {
                 Pension += items[i].money!!
             }
             Log.d(ContentValues.TAG, "IncomecursorAnalysis: ${items[i].money}")

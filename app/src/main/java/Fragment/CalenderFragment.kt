@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.incomeexpensemanager.R
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,7 +37,7 @@ class CalenderFragment :Fragment() {
         val v = inflater.inflate(R.layout.fragment_calender, container, false)
         lifecycleScope.launch {
             val db = AppDatabase.getDatabase(requireContext()).userDao()
-            var dataList:List<User> = db.getAllRecent()
+            var dataList: MutableList<User> = db.getAllRecent()
             val Adapter = RecentAdapter(requireContext(), dataList,this@CalenderFragment)
             v.recent_recyler!!.adapter = Adapter
 
@@ -48,5 +49,19 @@ class CalenderFragment :Fragment() {
     }
     fun showRecent() {
 
+    }
+    fun itemDelete(getID: Int, getMoney: Int, getFlag: String, getDate: String) {
+        val db = AppDatabase.getDatabase(requireContext()).userDao()
+        db.deleteByuid(getID)
+        // recycleList.removeAt(userPosition)
+
+        if(getFlag == "1"){
+            db.DeleteDisplayIn(getMoney,getDate)
+        }else{
+            db.DeleteDisplayExpense(getMoney,getDate)
+        }
+
+        Toast.makeText(requireContext(), "Deleted", Toast.LENGTH_SHORT).show()
+        // text()
     }
 }

@@ -27,6 +27,9 @@ class NavMenuActivity : AppCompatActivity() {
             val fragment = ProfileFragment()
             supportFragmentManager.beginTransaction().replace(R.id.frag_container, fragment)
                 .commit()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.setNavigationBarColor(getResources().getColor(R.color.mycustom))
+            }
         }else if(frag=="settings"){
             val fragment = SettingsFragment()
             supportFragmentManager.beginTransaction().replace(R.id.frag_container, fragment)
@@ -43,14 +46,14 @@ class NavMenuActivity : AppCompatActivity() {
             val window: Window = window
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            val decorView: View = window.getDecorView()
+            val decorView: View = window.decorView
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 decorView.systemUiVisibility =
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             } else {
                 decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             }
-            window.setStatusBarColor(Color.TRANSPARENT)
+            window.statusBarColor = Color.TRANSPARENT
         }
     }
 }

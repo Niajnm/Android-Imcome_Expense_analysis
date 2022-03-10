@@ -78,13 +78,13 @@ class AnalyzerFragment : Fragment() {
         Log.d(ContentValues.TAG, "cursorAnalysis: ${items.size}")
 
         for (i in items.indices) {
-            if (items[i].category == "Shopping" && items[i].tag == "expense") {
+            if (items[i].category == "Shopping" && items[i].tag == "0") {
                 Shopping += items[i].money!!
-            } else if (items[i].category == "House Rent" && items[i].tag == "expense") {
+            } else if (items[i].category == "House Rent" && items[i].tag == "0") {
                 hRent += items[i].money!!
-            } else if (items[i].category == "Loan" && items[i].tag == "expense") {
+            } else if (items[i].category == "Loan" && items[i].tag == "0") {
                 Loan += items[i].money!!
-            } else if (items[i].category == "Fees" && items[i].tag == "expense") {
+            } else if (items[i].category == "Fees" && items[i].tag == "0") {
                 Fees += items[i].money!!
             }
             Log.d(ContentValues.TAG, "cursorAnalysis: ${items[i].money}")

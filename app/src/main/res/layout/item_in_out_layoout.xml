@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -35,18 +35,15 @@
 
             <TextView
                 android:id="@+id/recent_time"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="5dp"
                 android:padding="2dp"
-                android:textSize="12sp"
-                android:text="12:30 AM" />
-
+                android:text="12:30 AM"
+                android:textSize="12sp" />
 
         </RelativeLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,7 +78,6 @@
                 android:text="Busines profit(credit card)"
                 android:textSize="11sp" />
 
-
         </LinearLayout>
 
         <TextView
@@ -98,8 +94,7 @@
             android:singleLine="true"
             android:text="bdt 987435897" />
 
-
     </LinearLayout>
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
