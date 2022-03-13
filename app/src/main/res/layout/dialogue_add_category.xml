@@ -14,13 +14,16 @@
         android:layout_gravity="center_horizontal"
         />
     <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/category_add_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="shopping"
         android:layout_marginTop="20px"
         android:padding="5dp"
         android:layout_margin="5dp"/>
-    <androidx.constraintlayout.utils.widget.MotionButton
+
+    <Button
+        android:id="@+id/cat_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="save"

@@ -26,8 +26,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class IncomeFragment : Fragment() {
-    var payType = ""
-    var cattype = ""
+    var payType =""
+    var cattype =""
     var currentDate = SimpleDateFormat("d MMM yyyy").format(Date())
     var date = currentDate
     var monthYr = ""

@@ -185,12 +185,12 @@ class MainActivity : AppCompatActivity(){
             }).show()
     }
 
-    override fun onResume() {
-        super.onResume()
-        val bpfragment = HomeFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, bpfragment).commit()
-
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        val bpfragment = HomeFragment()
+//        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, bpfragment).commit()
+//
+//    }
 
     fun LogOut(context :Context) {
         val builder1 = AlertDialog.Builder(context)
@@ -238,6 +238,7 @@ class MainActivity : AppCompatActivity(){
             dataList.addAll(displayData)
             Log.d("this", "listSearch: ${displayData.size}")
             Log.d("this", "flag: $tk")
+
             monthSearch.monthYearpass(dataList)
             for (i in dataList.indices) {
                 incomeMonthly += dataList[i].income!!

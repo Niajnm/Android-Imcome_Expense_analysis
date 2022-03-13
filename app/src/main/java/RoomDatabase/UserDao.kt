@@ -9,6 +9,10 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun getAll(): List<User>
 
+    @Query("SELECT * FROM category")
+    fun getCategorySpinner(): List<Category>
+
+
     @Query("SELECT * FROM display ORDER BY uid DESC")
     fun getAllDisplay(): List<DisplayItem>
 
@@ -27,7 +31,6 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE day IN (:userIds)")
     fun loadAllBbyDate(userIds: String): List<User>
 
-
     @Query("SELECT * FROM display WHERE day IN (:userIds)")
     fun getUniqueDate(userIds: String): List<DisplayItem>
 
@@ -43,6 +46,12 @@ interface UserDao {
 
     @Insert
     fun insertAll(vararg users: User)
+
+    @Insert
+    fun insertCategory(vararg cat: Category)
+
+    @Insert
+    fun insertPayMethod(vararg pay: PaymentType)
 
     @Insert
     fun insertAllDisplay(vararg item: DisplayItem)

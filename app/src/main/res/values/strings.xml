@@ -11,7 +11,7 @@
 
     <string-array name="income_category">
         <item>Salary</item>
-        <item>House Rent</item>
+        <item>Pension</item>
         <item>Interest</item>
         <item>Profit</item>
 

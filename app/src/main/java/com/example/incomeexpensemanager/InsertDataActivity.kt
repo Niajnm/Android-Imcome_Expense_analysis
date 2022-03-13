@@ -4,17 +4,18 @@ import RoomDatabase.AppDatabase
 import RoomDatabase.DisplayItem
 import RoomDatabase.User
 import android.app.DatePickerDialog
+import android.content.ContentValues.TAG
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_insert_data.*
 import kotlinx.android.synthetic.main.activity_insert_data.insert_date
@@ -55,7 +56,7 @@ class InsertDataActivity : AppCompatActivity() {
 
         if (!insertSwitch_id.isChecked) {
             test()
-            switch_tag_ex.isInvisible= false
+            switch_tag_ex.isInvisible = false
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 window.setNavigationBarColor(getResources().getColor(R.color.mycustom))
             }
@@ -65,9 +66,9 @@ class InsertDataActivity : AppCompatActivity() {
                 income()
                 scroll_view.setBackgroundResource(R.color.grn)
                 flag = 1
-                switch_tag_in.isInvisible= false
-                switch_tag_ex.isInvisible= true
-                Title_id.text ="Income"
+                switch_tag_in.isInvisible = false
+                switch_tag_ex.isInvisible = true
+                Title_id.text = "Income"
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     window.setNavigationBarColor(getResources().getColor(R.color.grn))
                 }
@@ -79,9 +80,9 @@ class InsertDataActivity : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     window.setNavigationBarColor(getResources().getColor(R.color.mycustom))
                 }
-                switch_tag_ex.isInvisible= false
-                switch_tag_in.isInvisible= true
-                Title_id.text ="Expense"
+                switch_tag_ex.isInvisible = false
+                switch_tag_in.isInvisible = true
+                Title_id.text = "Expense"
             }
 
         }
@@ -204,11 +205,27 @@ class InsertDataActivity : AppCompatActivity() {
     }
 
     fun income() {
-
+        val dataCategory = mutableListOf<String>()
         val incmCategory = resources.getStringArray(R.array.income_category)
+        lifecycleScope.launch(Dispatchers.IO) {
+            val dataspinList = mutableListOf<String>()
+            val db = AppDatabase.getDatabase(this@InsertDataActivity).userDao()
+            // val displayData = db.getAllDisplay()
+            val dataSpin = db.getCategorySpinner()
+            for(i in dataSpin.indices){
+                dataspinList.add(dataSpin[i].catType)
+            }
+           runOnUiThread {
+               dataCategory.addAll(dataspinList)
+           }
+
+
+        }
         var countryAdapter = ArrayAdapter<String>(
-            this@InsertDataActivity, R.layout.support_simple_spinner_dropdown_item, incmCategory!!
+            this@InsertDataActivity, R.layout.support_simple_spinner_dropdown_item, incmCategory
         )
+
+        Log.d(TAG, "income-$dataCategory")
         category_spinner.adapter = countryAdapter
         category_spinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -218,7 +235,7 @@ class InsertDataActivity : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    cattype = incmCategory!![position].toString()
+                    cattype = dataCategory[position]
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
