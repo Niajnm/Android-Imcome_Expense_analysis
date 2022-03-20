@@ -26,7 +26,7 @@ The project uses .
 
 ## Screenshots
 |<img src="https://i.imgur.com/GwJ0UBc.jpg" width=200/>|<img src="https://i.imgur.com/tWYiWiV.jpg" width=200/>|<img src="https://i.imgur.com/Lo8T8Vj.jpg" width=200/>|
-|<img src="https://i.imgur.com/FEpA0WA.jpg" width=200/>|<img src="https://i.imgur.com/msytmta.jpg" width=200/>|<img src="https://i.imgur.com/YWlsKMo.jpg" width=200 lenght=400/>|
+|<img src="https://i.imgur.com/FEpA0WA.jpg" width=200/>|<img src="https://i.imgur.com/msytmta.jpg" width=200/>|<img src="https://i.imgur.com/YWlsKMo.jpg" width=200 lenght=300/>|
 
 ## Demo
 |<img src="https://imgur.com/8wL8iAo.gif" width=300/>|
