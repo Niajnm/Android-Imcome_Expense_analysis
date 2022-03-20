@@ -1,7 +1,8 @@
 # Android-Imcome_Expense_analysis
 
 
-This project includes some features like medicine time alarm, alarm with prescription, blood pressure calculates analysis(include pie chart), doctors profile, yoga assistant, and world health news. The App uses Kotlin.
+This project includes some features like income expense calculation, storing data 
+category-wise, and can see the overview with a pie chart. The App uses Kotlin. 
 
 ### Note
 After installing the app you must give the "External Storage" permission
