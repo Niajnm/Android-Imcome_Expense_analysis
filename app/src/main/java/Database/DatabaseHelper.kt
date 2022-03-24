@@ -12,7 +12,7 @@ class DatabaseHelper(var context: Context?) : SQLiteOpenHelper(
 ) {
     override fun onCreate(db: SQLiteDatabase) {
         try {
-           db.execSQL(CREATE_TABLE)
+            db.execSQL(CREATE_TABLE)
             db.execSQL(CART_TABLE)
             Toast.makeText(context, "oncreate", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
@@ -24,7 +24,7 @@ class DatabaseHelper(var context: Context?) : SQLiteOpenHelper(
 
     fun insertData(
         title: String?,
-     //   id: String?,
+        //   id: String?,
         price: String?,
         details: String?,
         imageUrl: String
@@ -32,12 +32,13 @@ class DatabaseHelper(var context: Context?) : SQLiteOpenHelper(
         val sqLiteDatabase = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(TITLE, title)
-      //  contentValues.put(ID, id)
+        //  contentValues.put(ID, id)
         contentValues.put(PRICE, price)
         contentValues.put(DETAILS, details)
         contentValues.put(IMG, imageUrl)
         return sqLiteDatabase.insert(TABLE_NAME, null, contentValues)
     }
+
     fun insertCartData(
         title: String?,
         id: String?,
@@ -57,28 +58,6 @@ class DatabaseHelper(var context: Context?) : SQLiteOpenHelper(
         return sqLiteDatabase.insert(ANALYSIS_TABLE_NAME, null, contentValues)
     }
 
-//    fun updateCartData(
-//        title: String?,
-//       // id: String?,
-//        price: String?,
-//        details: String?,
-//        quantity: String?
-//    ): Boolean {
-//        val sqLiteDatabase = this.writableDatabase
-//        val contentValues = ContentValues()
-//        contentValues.put(TITLE, title)
-//        contentValues.put(ID, id)
-//        contentValues.put(PRICE, price)
-//        contentValues.put(DETAILS, details)
-//        contentValues.put(QAUNTITY, quantity)
-//
-//        sqLiteDatabase.update(TABLE_NAME, contentValues, "id_=?", arrayOf<String>(id!!)).toLong()
-//
-//        return true
-//
-//    }
-
-
     fun dsiplayData(): Cursor {
         val sqLiteDatabase = this.writableDatabase
         return sqLiteDatabase.rawQuery("SELECT * FROM $TABLE_NAME", null)
@@ -92,7 +71,6 @@ class DatabaseHelper(var context: Context?) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "Product_DB"
-
         private const val TABLE_NAME = "Display"
         private const val ANALYSIS_TABLE_NAME = "Analysis"
         private const val TITLE = "Title"
@@ -105,8 +83,8 @@ class DatabaseHelper(var context: Context?) : SQLiteOpenHelper(
         private const val VERSION_NUM = 2
         private const val CREATE_TABLE =
             "CREATE TABLE $TABLE_NAME($ID INTEGER  PRIMARY KEY AUTOINCREMENT,$TITLE VARCHAR(50),$DETAILS VARCHAR(150),$PRICE INTEGER, $IMG VARCHAR(500))"
-     private const val CART_TABLE ="CREATE TABLE " + ANALYSIS_TABLE_NAME + "(" + ID + " VARCHAR(100)  PRIMARY KEY ," + TITLE + " VARCHAR(50)," + DETAILS + " VARCHAR(150)," + PRICE + " INTEGER,"+ QAUNTITY +" INTEGER, $IMG VARCHAR(500))"
-
+        private const val CART_TABLE =
+            "CREATE TABLE " + ANALYSIS_TABLE_NAME + "(" + ID + " VARCHAR(100)  PRIMARY KEY ," + TITLE + " VARCHAR(50)," + DETAILS + " VARCHAR(150)," + PRICE + " INTEGER," + QAUNTITY + " INTEGER, $IMG VARCHAR(500))"
 
     }
 }

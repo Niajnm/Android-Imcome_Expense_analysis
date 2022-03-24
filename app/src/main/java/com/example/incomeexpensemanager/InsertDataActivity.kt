@@ -88,7 +88,6 @@ class InsertDataActivity : AppCompatActivity() {
         }
         floating_button.setOnClickListener {
             if (flag == 1) {
-
                 dataSetincm()
             } else {
                 setDataExpn()
@@ -151,7 +150,6 @@ class InsertDataActivity : AppCompatActivity() {
                 ) {
                     cattype = expnCategory!![position].toString()
                 }
-
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
@@ -167,7 +165,6 @@ class InsertDataActivity : AppCompatActivity() {
                 ) {
                     payType = incmPayment!![position].toString()
                 }
-
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
     }
@@ -180,7 +177,6 @@ class InsertDataActivity : AppCompatActivity() {
             text_money!!.error = "Money!"
             text_money!!.requestFocus()
         } else {
-
             val money = text_money.text.toString().toInt()
             lifecycleScope.launch(Dispatchers.IO) {
                 val db = AppDatabase.getDatabase(this@InsertDataActivity).userDao()
@@ -198,7 +194,6 @@ class InsertDataActivity : AppCompatActivity() {
                 } catch (e: Exception) {
                 }
             }
-
             finish()
             //  startActivity(Intent(requireContext(), MainActivity::class.java))
         }
@@ -212,19 +207,17 @@ class InsertDataActivity : AppCompatActivity() {
             val db = AppDatabase.getDatabase(this@InsertDataActivity).userDao()
             // val displayData = db.getAllDisplay()
             val dataSpin = db.getCategorySpinner()
-            for(i in dataSpin.indices){
+            for (i in dataSpin.indices) {
                 dataspinList.add(dataSpin[i].catType)
+                dataspinList.add(dataSpin[i].uid.toString())
             }
-           runOnUiThread {
-               dataCategory.addAll(dataspinList)
-           }
-
-
+            runOnUiThread {
+                dataCategory.addAll(dataspinList)
+            }
         }
         var countryAdapter = ArrayAdapter<String>(
-            this@InsertDataActivity, R.layout.support_simple_spinner_dropdown_item, incmCategory
+            this, R.layout.support_simple_spinner_dropdown_item, dataCategory
         )
-
         Log.d(TAG, "income-$dataCategory")
         category_spinner.adapter = countryAdapter
         category_spinner.onItemSelectedListener =
@@ -253,7 +246,6 @@ class InsertDataActivity : AppCompatActivity() {
                 ) {
                     payType = incmPayment!![position].toString()
                 }
-
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
     }
@@ -302,7 +294,6 @@ class InsertDataActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 decorView.systemUiVisibility =
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-
             } else {
                 decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             }

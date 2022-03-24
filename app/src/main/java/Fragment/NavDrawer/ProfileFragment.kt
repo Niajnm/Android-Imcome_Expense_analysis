@@ -36,7 +36,6 @@ class ProfileFragment : Fragment() {
     }
 
     fun LogOut(context :Context) {
-
         val builder1 = AlertDialog.Builder(context)
         builder1.setMessage("Do you want to Logout ?")
         builder1.setCancelable(true)

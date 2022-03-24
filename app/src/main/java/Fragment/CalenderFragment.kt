@@ -44,7 +44,6 @@ class CalenderFragment :Fragment() {
             v.recent_recyler.layoutManager = LinearLayoutManager(requireContext())
         }
         showRecent()
-
         return v
     }
     fun showRecent() {
@@ -54,13 +53,11 @@ class CalenderFragment :Fragment() {
         val db = AppDatabase.getDatabase(requireContext()).userDao()
         db.deleteByuid(getID)
         // recycleList.removeAt(userPosition)
-
         if(getFlag == "1"){
             db.DeleteDisplayIn(getMoney,getDate)
         }else{
             db.DeleteDisplayExpense(getMoney,getDate)
         }
-
         Toast.makeText(requireContext(), "Deleted", Toast.LENGTH_SHORT).show()
         // text()
     }

@@ -1,5 +1,4 @@
 package Fragment.NavDrawer
-
 import RoomDatabase.AppDatabase
 import RoomDatabase.Category
 import RoomDatabase.PaymentType
@@ -21,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_settings.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class SettingsFragment : Fragment() {
     var flag = 0
 
@@ -35,7 +33,6 @@ class SettingsFragment : Fragment() {
             addMethod()
             flag = 1
         }
-
         v.card_id2.setOnClickListener {
             addMethod()
             flag = 2
@@ -43,18 +40,16 @@ class SettingsFragment : Fragment() {
         return v
     }
 
-    fun addMethod() {
+    private fun addMethod() {
 
         Toast.makeText(requireContext(), "clicked", Toast.LENGTH_SHORT).show()
         val builder1 = AlertDialog.Builder(context)
         val layoutInflater = LayoutInflater.from(context)
         val dialogView = layoutInflater.inflate(R.layout.dialogue_add_category, null)
-
         builder1.setView(dialogView)
         builder1.setCancelable(true)
         val alert11: AlertDialog = builder1.create()
         alert11.show()
-
         dialogView.cat_save_button.setOnClickListener {
 
             val cat = dialogView.category_add_id.text.toString()
@@ -64,7 +59,6 @@ class SettingsFragment : Fragment() {
                 text_money!!.requestFocus()
             } else {
                 if (flag == 1) {
-
                     try {
                         val db = AppDatabase.getDatabase(requireContext()).userDao()
                         val categoryItem = Category(0, cat)

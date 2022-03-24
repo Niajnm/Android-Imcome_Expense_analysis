@@ -12,6 +12,8 @@ interface UserDao {
     @Query("SELECT * FROM category")
     fun getCategorySpinner(): List<Category>
 
+    @Query("SELECT * FROM paymentType")
+    fun getPaymnetSpinner(): List<PaymentType>
 
     @Query("SELECT * FROM display ORDER BY uid DESC")
     fun getAllDisplay(): List<DisplayItem>

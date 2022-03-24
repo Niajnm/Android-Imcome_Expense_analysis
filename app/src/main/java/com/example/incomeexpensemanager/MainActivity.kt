@@ -33,9 +33,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(){
     var yeatMonth = ""
-
     var currentDate = SimpleDateFormat("MMM yyyy").format(Date())
-
     var sharedpreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +58,6 @@ class MainActivity : AppCompatActivity(){
         }
         open_add_btn.setOnClickListener {
             startActivity(Intent(this, InsertDataActivity::class.java))
-
         }
 
         nav_id.setNavigationItemSelectedListener { item ->
@@ -69,7 +66,6 @@ class MainActivity : AppCompatActivity(){
                     val intent = Intent(this,NavMenuActivity::class.java)
                     intent.putExtra("fragKey","profile")
                     startActivity(intent)
-
                 }
                 R.id.menuSetting_id -> {
 
@@ -101,11 +97,9 @@ class MainActivity : AppCompatActivity(){
                     intent.putExtra(Intent.EXTRA_SUBJECT, subject)
                     intent.putExtra(Intent.EXTRA_TEXT, head)
                     startActivity(Intent.createChooser(intent,"Open Mail"))
-
                     Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
                 }
                 R.id.menuAbout_id -> {
-
                     val intent = Intent(this,NavMenuActivity::class.java)
                     intent.putExtra("fragKey","about")
                     startActivity(intent)
@@ -125,7 +119,6 @@ class MainActivity : AppCompatActivity(){
        // bottom_navigation.menu.findItem(R.id.menuAnalysis_id).setChecked(true)
         bottom_navigation.setOnNavigationItemSelectedListener {
             //mBottomNavigationView=(BottomNavigationView)findViewById(R.id.bottom_nav);
-
             when (it.itemId) {
                 R.id.menuScale_id -> {
                     val bpfragment = HomeFragment()
@@ -196,7 +189,6 @@ class MainActivity : AppCompatActivity(){
         val builder1 = AlertDialog.Builder(context)
         builder1.setMessage("Do you want to Logout ?")
         builder1.setCancelable(true)
-
         builder1.setPositiveButton(
             "Yes"
         ) { dialog, id ->

@@ -34,18 +34,17 @@ class LoginActivity : AppCompatActivity() {
             userLogin()
         }
         textView_createAcc_id.setOnClickListener {
-
             startActivity(Intent(this, SignUpActivity::class.java))
             finish()
         }
-
         textView_Forgot_id.setOnClickListener {
+            //todo
         }
     }
 
     private fun userLogin() {
         val email: String = textLogin_email.text.toString().trim()
-        val pass: String = textLogin_pass.getText().toString()
+        val pass: String = textLogin_pass.text.toString()
         if (email.isEmpty()) {
             textLogin_email.error = "Enter a valid email"
             textLogin_email.requestFocus()
@@ -56,7 +55,6 @@ class LoginActivity : AppCompatActivity() {
             textLogin_email.requestFocus()
             return
         }
-
         //checking the validity of the password
         if (pass.isEmpty()) {
             textLogin_pass.setError("Enter a password")
@@ -68,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
             textLogin_pass.requestFocus()
             return
         }
+
         //progressBar.setVisibility(View.VISIBLE)
         val authResultTask: Task<AuthResult> =
             auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
@@ -89,6 +88,5 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
     }
-
 
 }

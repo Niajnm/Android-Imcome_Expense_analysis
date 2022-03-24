@@ -29,7 +29,6 @@ class SignUpActivity : AppCompatActivity() {
         supportActionBar?.hide()
         auth = Firebase.auth
         textView_loginMember.setOnClickListener {
-
             startActivity(Intent(this,LoginActivity::class.java))
             finish()
         }
@@ -39,11 +38,10 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-
     private fun UserRegister() {
-        val email: String = textSign_email.getText().toString().trim()
-        val pass: String = textSign_pass.getText().toString()
-        val cpass: String = textSign_Cpass.getText().toString()
+        val email: String = textSign_email.text.toString().trim()
+        val pass: String = textSign_pass.text.toString()
+        val cpass: String = textSign_Cpass.text.toString()
         if (email.isEmpty()) {
             textSign_email.setError("Enter an email address")
             textSign_email.requestFocus()
@@ -92,9 +90,7 @@ class SignUpActivity : AppCompatActivity() {
                         "Mail Already Registered ",
                         Toast.LENGTH_SHORT
                     ).show()
-
-
-                   // Snackbar.make(mBinding.mainLayout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
+                    //Snackbar.make(mBinding.mainLayout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
 
                 }
             })

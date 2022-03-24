@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
@@ -39,6 +40,7 @@
                 android:layout_weight="1"
                 app:chipBackgroundColor="#6F083504"
                 android:gravity="center"
+                android:clickable="false"
                 android:text="bd 837465"
                 app:chipIcon="@drawable/ic_baseline_add_circle_24"
                 android:textColor="@color/white"
@@ -52,6 +54,7 @@
                 android:layout_weight="1"
                 app:chipBackgroundColor="#97700C05"
                 android:text="bd 213764"
+                android:clickable="false"
                 app:chipIcon="@drawable/ic_baseline_do_not_disturb_on_24"
                 android:textAlignment="center"
                 android:textColor="@color/white" />

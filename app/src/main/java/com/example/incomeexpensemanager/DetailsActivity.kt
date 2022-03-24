@@ -42,7 +42,7 @@ class DetailsActivity : AppCompatActivity() {
             var dataList: List<User>
             dataList = db.loadAllBbyDate(rcvDate!!)
             runOnUiThread {
-               recycleList.addAll(dataList)
+                recycleList.addAll(dataList)
             }
         }
         loadRecycler()
@@ -53,6 +53,7 @@ class DetailsActivity : AppCompatActivity() {
         detailsRecycler_id!!.adapter = Adapter
         detailsRecycler_id.layoutManager = LinearLayoutManager(this@DetailsActivity)
     }
+
     fun itemEdit() {
         startActivity(Intent(this, InsertDataActivity::class.java))
     }
@@ -60,15 +61,15 @@ class DetailsActivity : AppCompatActivity() {
     fun itemDelete(getID: Int, userPosition: Int, getMoney: Int, getFlag: String, getDate: String) {
         val db = AppDatabase.getDatabase(this@DetailsActivity).userDao()
         db.deleteByuid(getID)
-       // recycleList.removeAt(userPosition)
+        // recycleList.removeAt(userPosition)
 
-        if(getFlag == "1"){
-            db.DeleteDisplayIn(getMoney,getDate)
-        }else{
-            db.DeleteDisplayExpense(getMoney,getDate)
+        if (getFlag == "1") {
+            db.DeleteDisplayIn(getMoney, getDate)
+        } else {
+            db.DeleteDisplayExpense(getMoney, getDate)
         }
 
         Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show()
-       // text()
+        // text()
     }
 }

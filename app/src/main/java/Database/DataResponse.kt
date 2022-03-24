@@ -16,6 +16,5 @@ class DataResponse {
    fun log(){
        Log.d(TAG, "Dataresponde token :"+dataToken)
 
-
    }
 }

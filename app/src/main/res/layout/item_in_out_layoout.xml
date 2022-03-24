@@ -5,8 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/details_cardView"
     android:layout_margin="5dp"
     android:orientation="vertical"
+    android:elevation="100dp"
     android:padding="5dp"
     app:cardCornerRadius="5dp">
 

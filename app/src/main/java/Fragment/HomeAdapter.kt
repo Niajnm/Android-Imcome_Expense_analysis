@@ -17,6 +17,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_itmedi.Database.DataResponse
 import com.example.incomeexpensemanager.R
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 
 class HomeAdapter(
@@ -31,6 +32,7 @@ class HomeAdapter(
         var viewName: TextView = itemView.findViewById(R.id.textDate_id)
         var viewIncome: Chip = itemView.findViewById(R.id.totIncome_id)
         var viewExpense: Chip = itemView.findViewById(R.id.totExpense_id)
+        var viewCard: MaterialCardView = itemView.findViewById(R.id.item_cardView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -50,15 +52,7 @@ class HomeAdapter(
 
 
 
-        holder.viewIncome.setOnClickListener {
-            fragment.deatailsList(getdate, getIncome, getExpense)
-        }
-
-        holder.viewExpense.setOnClickListener {
-            fragment.deatailsList(getdate, getIncome, getExpense)
-        }
-
-        holder.itemView.setOnClickListener {
+        holder.viewCard.setOnClickListener {
             fragment.deatailsList(getdate, getIncome, getExpense)
         }
 

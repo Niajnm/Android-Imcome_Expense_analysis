@@ -27,29 +27,6 @@ class StartActivity : AppCompatActivity() {
         supportActionBar?.hide()
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
-       /*lifecycleScope.launch(Dispatchers.IO){
-           val time = measureTimeMillis {
-              *//* val a = async { dowork1() }
-               val b = async { dowork2() }
-
-               Log.d("check","work 1::${a.await()}")
-               Log.d("check","work 2::${b.await()}")*//*
-
-               val a =  dowork1()
-               Log.d("check","work 1::$a")
-
-           }
-           Log.d("check","finish work after::$time ms.")
-           }
-           */
-
-//        val time = measureTimeMillis {
-//           val a = dowork1()
-//           val b = dowork2()
-//            Log.d("check","work 1::$a")
-//            Log.d("check","work 1::$b")
-//        }
-//        Log.d("check","finish work after::$time ms.")
 
         val mauth = Firebase.auth
         val currentUser = mauth.currentUser
@@ -70,24 +47,7 @@ class StartActivity : AppCompatActivity() {
         }
     }
 
-   /* suspend fun dowork1(){
-        delay(1000)
-    }
-      suspend fun dowork2(){
-        delay(100)
-    }*/
 
-     fun dowork1(){
-         lifecycleScope.launch(Dispatchers.IO){
-             delay(1000)
-         }
-
-    }
-     fun dowork2(){
-         lifecycleScope.launch(Dispatchers.IO){
-             delay(100)
-         }
-    }
     override fun onBackPressed() {
         var builder = androidx.appcompat.app.AlertDialog.Builder(this)
         builder!!.setTitle("Exit !")

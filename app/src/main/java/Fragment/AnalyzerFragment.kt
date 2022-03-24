@@ -22,8 +22,8 @@ import org.eazegraph.lib.models.PieModel
 class AnalyzerFragment : Fragment() {
     private lateinit var mPieChart: PieChart
     var loan = 0
-
     var dataList = mutableListOf<User>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -59,14 +59,6 @@ class AnalyzerFragment : Fragment() {
         return v
     }
 
-//    fun dodo(){
-////
-////        Handler().postDelayed({
-////            showData(dataList)
-////        }, 500)
-//        showData(dataList)
-//    }
-
     private fun showData(items: List<User>) {
 
         var Shopping = 0
@@ -93,11 +85,11 @@ class AnalyzerFragment : Fragment() {
         chart(Shopping, hRent, Loan, Fees)
     }
 
-    fun chart(Shopping: Int, hRent: Int, Loan: Int, Fees: Int) {
+    private fun chart(Shopping: Int, hRent: Int, Loan: Int, Fees: Int) {
 
         tv_Shopping.setText(Integer.toString(Shopping))
         tv_homeRent.setText(Integer.toString(hRent))
-        tv_Loan.setText(Integer.toString(Loan))
+        tv_Loan.text = Integer.toString(Loan)
         tv_Fees.setText(Integer.toString(Fees))
         // Set the data and color to the pie chart
         mPieChart.clearChart()

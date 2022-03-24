@@ -30,11 +30,11 @@ class NavMenuActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 window.setNavigationBarColor(getResources().getColor(R.color.mycustom))
             }
-        }else if(frag=="settings"){
+        } else if (frag == "settings") {
             val fragment = SettingsFragment()
             supportFragmentManager.beginTransaction().replace(R.id.frag_container, fragment)
                 .commit()
-        }else if(frag=="about"){
+        } else if (frag == "about") {
             val fragment = AboutFragment()
             supportFragmentManager.beginTransaction().replace(R.id.frag_container, fragment)
                 .commit()
